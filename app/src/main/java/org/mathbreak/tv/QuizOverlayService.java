@@ -70,9 +70,11 @@ public final class QuizOverlayService extends Service {
                     PixelFormat.TRANSLUCENT);
             params.gravity = Gravity.CENTER;
             params.dimAmount = 0.28f;
+            // Capture playback before overlay focus can make the player self-pause.
+            // If addView fails, onDestroy() still restores the saved session.
+            pausedByUs = PlaybackController.pause(this);
             windows.addView(root, params);
             QuizAlarmReceiver.clearNotification(this);
-            pausedByUs = PlaybackController.pause(this);
         } catch (Exception e) {
             android.util.Log.e("MathBreak", "Unable to show quiz overlay", e);
             QuizAlarmReceiver.notifyPending(this);
