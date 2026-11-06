@@ -26,16 +26,9 @@ public final class QuizAlarmReceiver extends BroadcastReceiver {
         QuizState.prefs(context).edit().putBoolean(QuizState.KEY_DUE, true).apply();
         // Do NOT pause media in a BroadcastReceiver: quiz may be blocked from appearing.
         notifyPending(context);
-        if (Build.VERSION.SDK_INT < 29 || (Build.VERSION.SDK_INT >= 23 && Settings.canDrawOverlays(context))) {
-            try {
-                Intent activity = new Intent(context, MainActivity.class);
-                activity.putExtra(MainActivity.EXTRA_AUTO_QUIZ, true);
-                activity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(activity);
-            } catch (RuntimeException ignored) {
-                // Background activity launches can be blocked by Android/TV OEM. Notification is fallback.
-            }
-        }
+        // A WindowManager overlay doesn't put the video Activity through onPause/onResume.
+        // A foreground-service launch may still be restricted by Android/TV firmware.
+        QuizOverlayService.launch(context);
     }
 
     static void notifyPending(Context context) {
