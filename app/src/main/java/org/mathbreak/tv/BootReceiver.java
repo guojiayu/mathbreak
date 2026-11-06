@@ -6,6 +6,7 @@ import android.content.Intent;
 
 public final class BootReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context context, Intent intent) {
-        QuizScheduler.restore(context);
+        if (QuizState.pending(context)) QuizAlarmReceiver.notifyPending(context);
+        else QuizScheduler.restore(context);
     }
 }
