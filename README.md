@@ -1,5 +1,22 @@
 # MathBreak TV
 
+## V0.2.0 — small TV overlay and Math Mode Back navigation
+
+In timed Quiz Mode, the timer receiver starts `QuizOverlayService`, which creates a **focusable, non-fullscreen `TYPE_APPLICATION_OVERLAY`** window instead of bringing a second Activity above the video. The video application's Activity remains in its prior task/lifecycle state. If notification access is granted, the service requests a MediaSession pause after the overlay is shown, and a resume when it disappears. Players may ignore those commands.
+
+A correct answer dismisses exactly **one** question and restarts the selected timer. An incorrect answer retains the same question. Math Mode remains an Activity with unlimited practice. `singleTask` launcher behavior prevents older MathBreak Activity instances from accumulating; pressing Back in Math Mode no longer reveals a stack of previous problem Activities.
+
+Android permissions: grant **Display over other apps** for the Quiz overlay. The short-lived overlay foreground service declares Android 14 `specialUse` type. Some Android/TV firmware may restrict background foreground-service starts; the pending quiz is retained and a fallback notification remains. This ordinary APK cannot force third-party players to pause or block system Home/navigation.
+
+### V0.2.0 device validation
+
+- Solve several Math Mode problems; press Back and confirm previously solved questions do not reappear.
+- Start 15/30/45-minute Quiz Mode; while playing a video, use debug **TEST: Trigger one quiz now**.
+- Verify a centered window smaller than the screen appears without the video Activity's `onPause`/`onResume` lifecycle.
+- Wrong answer: same problem remains. Back: quiz stays visible. Correct answer: overlay disappears, MediaSession play is requested only if MathBreak paused it, and a new interval is scheduled.
+- Test permission denial, Doze/delayed alarms, screen sleep, force-stop, reboot, and non-cooperating video players.
+
+
 An **Android TV remote-first learning app** that alternates between continuous math practice and timed, one-question system-wide quizzes. Built as an ordinary sideloadable APK. No integrated video player, no AndroidX dependencies, no native code.
 
 > **Status:** implementation source and CI build definition. This is an MVP to test on real Android TVs. System-wide Activity launches and control of *other* video applications are **best effort** and **cannot be guaranteed** on all TVs by an ordinary APK.
@@ -13,7 +30,7 @@ An **Android TV remote-first learning app** that alternates between continuous m
 | Back before correct answer | Explanation that math must be solved; cannot dismiss the app's question with Back |
 | Back after correct answer | Choose Quiz Mode interval: 15 / 30 / 45 minutes or remain in Math Mode |
 | Quiz Mode break | Activity finishes and previous task is revealed; one-shot timer runs in background |
-| Timer expires | Marks one quiz pending; tries to launch full-screen quiz above the TV app; posts fallback notification |
+| Timer expires | Marks one quiz pending; starts a small interactive overlay above the TV app; posts fallback notification |
 | Quiz wrong answer | Same problem stays, optional hint after 2 wrong attempts |
 | Quiz correct answer | Save result, schedule **one new** interval from answer time, request playback resume, finish Activity |
 | Device reboot | Boot receiver restores the next due alarm; pending quiz remains pending |
@@ -63,7 +80,7 @@ On a debug build, while **Quiz Mode is waiting**, open MathBreak from the launch
 | Set 15-minute Quiz Mode | App exits; next alarm recorded |
 | Trigger test quiz from waiting screen | Exactly one problem shown |
 | Wrong answer in Quiz Mode | Same question remains |
-| Correct answer in Quiz Mode | Activity finishes, timer restarts, playback resume requested if previously paused |
+| Correct answer in Quiz Mode | Overlay closes, timer restarts, playback resume requested if previously paused |
 | Reboot during timed break | Next alarm restored |
 | Reopen app after forced process death | Current mode/quiz due state persists in SharedPreferences |
 | No overlay permission | Fallback notification; quiz still appears if launched manually |
