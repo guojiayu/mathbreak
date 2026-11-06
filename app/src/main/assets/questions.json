@@ -1,0 +1,477 @@
+[
+  {
+    "id": "ORIGINAL-MATHBREAK-01",
+    "prompt": "A rectangle has perimeter 30 cm and width 6 cm. What is its length?",
+    "choices": [
+      "6 cm",
+      "7 cm",
+      "8 cm",
+      "9 cm",
+      "10 cm"
+    ],
+    "correct": 3,
+    "hint": "The perimeter is twice the sum of length and width.",
+    "solutions": [
+      "Let the length be L. Then 2(L + 6) = 30, so L + 6 = 15 and L = 9 cm.",
+      "Half the perimeter is 15 cm. Take away the 6 cm width: the length is 9 cm."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-02",
+    "prompt": "A bag holds 5 red, 7 blue, and 8 green marbles. What is the probability of picking a blue marble?",
+    "choices": [
+      "1/4",
+      "7/20",
+      "2/5",
+      "7/13",
+      "1/3"
+    ],
+    "correct": 1,
+    "hint": "Count all the marbles first.",
+    "solutions": [
+      "There are 5 + 7 + 8 = 20 marbles, of which 7 are blue. Probability = 7/20.",
+      "The favorable outcomes are the 7 blue marbles; total equally likely outcomes are 20. Therefore 7/20."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-03",
+    "prompt": "The sequence begins 3, 7, 11, 15, ... What is its 10th term?",
+    "choices": [
+      "35",
+      "37",
+      "39",
+      "41",
+      "43"
+    ],
+    "correct": 2,
+    "hint": "Each new term is 4 larger than the last.",
+    "solutions": [
+      "The nth term is 3 + 4(n - 1). For n = 10, this equals 3 + 36 = 39.",
+      "The 10th term is nine jumps after the first. Nine jumps of 4 total 36; 3 + 36 = 39."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-04",
+    "prompt": "The mean of 4, 8, 10, and x is 9. What is x?",
+    "choices": [
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "correct": 2,
+    "hint": "The sum of four numbers with mean 9 is 36.",
+    "solutions": [
+      "4 + 8 + 10 + x = 4 × 9 = 36. Therefore x = 36 - 22 = 14.",
+      "The existing three values add to 22. The target total is 36, so the missing amount is 14."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-05",
+    "prompt": "Three-fifths of a number equals 24. What is that number?",
+    "choices": [
+      "30",
+      "36",
+      "40",
+      "45",
+      "48"
+    ],
+    "correct": 2,
+    "hint": "First find one-fifth of the number.",
+    "solutions": [
+      "If (3/5)n = 24, then n = 24 × 5/3 = 40.",
+      "Three equal fifths make 24, so one fifth is 8. Five fifths make 5 × 8 = 40."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-06",
+    "prompt": "Two angles of a triangle measure 45° and 65°. What is its third angle?",
+    "choices": [
+      "60°",
+      "65°",
+      "70°",
+      "75°",
+      "80°"
+    ],
+    "correct": 2,
+    "hint": "The interior angles of a triangle sum to 180°.",
+    "solutions": [
+      "Third angle = 180° - 45° - 65° = 70°.",
+      "The two known angles total 110°. A straight angle is 180°, leaving 70°."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-07",
+    "prompt": "Two students share 120 stickers in the ratio 3:5. How many does the student with the larger share receive?",
+    "choices": [
+      "45",
+      "60",
+      "72",
+      "75",
+      "80"
+    ],
+    "correct": 3,
+    "hint": "The ratio has eight total parts.",
+    "solutions": [
+      "There are 3 + 5 = 8 equal parts. Each part is 120/8 = 15, so the larger share is 5 × 15 = 75.",
+      "The larger share is 5/8 of the whole: 120 × 5/8 = 75."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-08",
+    "prompt": "A square has area 81 square centimeters. What is its perimeter?",
+    "choices": [
+      "18 cm",
+      "27 cm",
+      "32 cm",
+      "36 cm",
+      "40 cm"
+    ],
+    "correct": 3,
+    "hint": "A square's area is side × side.",
+    "solutions": [
+      "Its side length is sqrt(81) = 9 cm. Its perimeter is 4 × 9 = 36 cm.",
+      "A 9-by-9 square has area 81. Four equal 9-cm sides total 36 cm."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-09",
+    "prompt": "How many two-digit positive integers are multiples of 5?",
+    "choices": [
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    "correct": 2,
+    "hint": "Start at 10 and end at 95.",
+    "solutions": [
+      "The multiples are 10, 15, ..., 95. Count = (95 - 10)/5 + 1 = 18.",
+      "There are 19 multiples of 5 at most 95, counting 5. Remove the one-digit number 5 to get 18."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-10",
+    "prompt": "A jacket costs $80. It is discounted 25%, then a 10% tax is charged on the discounted price. What is the final cost?",
+    "choices": [
+      "$60",
+      "$62",
+      "$64",
+      "$66",
+      "$70"
+    ],
+    "correct": 3,
+    "hint": "Apply the discount before calculating the tax.",
+    "solutions": [
+      "Discounted price: 80 × 0.75 = 60. Tax: 60 × 0.10 = 6. Total: $66.",
+      "Multiply the original price by 0.75 × 1.10 = 0.825. Thus 80 × 0.825 = $66."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-11",
+    "prompt": "How many pairs of positive integers (x, y) satisfy x + y = 10 and x > y?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 2,
+    "hint": "List the smaller positive value y.",
+    "solutions": [
+      "Possible pairs are (9,1), (8,2), (7,3), (6,4), for a total of four.",
+      "Since x > y and x + y = 10, y can be 1, 2, 3, or 4. Thus there are four pairs."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-12",
+    "prompt": "What is the smaller angle between the hands of a clock at exactly 3:00?",
+    "choices": [
+      "30°",
+      "60°",
+      "90°",
+      "120°",
+      "150°"
+    ],
+    "correct": 2,
+    "hint": "A clock face has 12 equally spaced hour marks.",
+    "solutions": [
+      "At 3:00 the minute hand points to 12 and the hour hand to 3. Three hour spacings of 30° give 90°.",
+      "A quarter turn of a circle is 360°/4 = 90°. The hands are one quarter turn apart."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-13",
+    "prompt": "Five consecutive integers have a sum of 85. What is the largest integer?",
+    "choices": [
+      "17",
+      "18",
+      "19",
+      "20",
+      "21"
+    ],
+    "correct": 2,
+    "hint": "The middle integer is also their average.",
+    "solutions": [
+      "The mean is 85/5 = 17, so the integers are 15, 16, 17, 18, 19. Largest is 19.",
+      "Let the middle number be n. The sum is 5n = 85, so n = 17; add 2 for the largest: 19."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-14",
+    "prompt": "How many squares of any size can be found in a 3-by-3 grid of unit squares?",
+    "choices": [
+      "9",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "correct": 3,
+    "hint": "Count 1-by-1, then 2-by-2, then 3-by-3 squares.",
+    "solutions": [
+      "There are 9 unit squares, 4 squares of side 2, and 1 square of side 3. Total = 14.",
+      "Use 1² + 2² + 3² = 1 + 4 + 9 = 14 squares."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-15",
+    "prompt": "Two fair six-sided dice are rolled. What is the probability that their sum is 7?",
+    "choices": [
+      "1/12",
+      "1/9",
+      "1/6",
+      "1/4",
+      "1/3"
+    ],
+    "correct": 2,
+    "hint": "There are 36 equally likely ordered outcomes.",
+    "solutions": [
+      "The six winning outcomes are (1,6),(2,5),(3,4),(4,3),(5,2),(6,1). So probability = 6/36 = 1/6.",
+      "Each first-die value from 1 through 6 determines exactly one second-die value. That is 6 wins out of 36 outcomes, or 1/6."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-16",
+    "prompt": "A cyclist rides at 12 km/h for 90 minutes. How far do they travel?",
+    "choices": [
+      "12 km",
+      "15 km",
+      "18 km",
+      "20 km",
+      "24 km"
+    ],
+    "correct": 2,
+    "hint": "Ninety minutes is one and a half hours.",
+    "solutions": [
+      "Distance = speed × time = 12 × (90/60) = 18 km.",
+      "In one hour, travel 12 km; in a further half hour, 6 km. Total 18 km."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-17",
+    "prompt": "A box contains red and blue blocks in the ratio 2:3. After adding 5 red blocks, the colors have equal counts. How many blocks were originally in the box?",
+    "choices": [
+      "15",
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "correct": 2,
+    "hint": "The difference between the red and blue counts is one ratio part.",
+    "solutions": [
+      "Originally red = 2k and blue = 3k. Since 2k + 5 = 3k, k = 5; total = 5k = 25.",
+      "Five added red blocks exactly fill the missing one ratio part. Each part is 5, and there are five parts total, giving 25."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-18",
+    "prompt": "How many integers from 1 through 100 are divisible by both 4 and 6?",
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correct": 2,
+    "hint": "A number divisible by both must be divisible by their least common multiple.",
+    "solutions": [
+      "lcm(4,6) = 12. Multiples of 12 up to 100 are 12,24,...,96, giving floor(100/12) = 8.",
+      "12 × 8 = 96 but 12 × 9 = 108 > 100. Exactly eight positive multiples fit."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-19",
+    "prompt": "A rectangle is 8 units long and 9 units wide. What is its area?",
+    "choices": [
+      "64",
+      "68",
+      "70",
+      "72",
+      "80"
+    ],
+    "correct": 3,
+    "hint": "Area of rectangle = length × width.",
+    "solutions": [
+      "Multiply 8 × 9 to get 72 square units.",
+      "Divide the rectangle into eight strips of nine unit squares. There are 8 × 9 = 72 unit squares."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-20",
+    "prompt": "Three-eighths of a class of 24 students play violin. How many students do not play violin?",
+    "choices": [
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "correct": 3,
+    "hint": "First count the students who do play violin.",
+    "solutions": [
+      "There are (3/8) × 24 = 9 violin players. The other 24 - 9 = 15 do not play.",
+      "The non-violin fraction is 1 - 3/8 = 5/8. So (5/8) × 24 = 15."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-21",
+    "prompt": "Each of four friends independently chooses one of three ice-cream flavors. How many ordered combinations of choices are possible?",
+    "choices": [
+      "27",
+      "64",
+      "72",
+      "81",
+      "96"
+    ],
+    "correct": 3,
+    "hint": "Each additional friend triples the count.",
+    "solutions": [
+      "There are 3 choices for each of 4 friends, giving 3 × 3 × 3 × 3 = 81.",
+      "By the multiplication principle, 3^4 = 81 different assignments."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-22",
+    "prompt": "What is the sum of the interior angles of a hexagon?",
+    "choices": [
+      "540°",
+      "600°",
+      "680°",
+      "720°",
+      "900°"
+    ],
+    "correct": 3,
+    "hint": "A hexagon can be split into four triangles.",
+    "solutions": [
+      "Sum = (6 - 2) × 180° = 720°.",
+      "Draw diagonals from one vertex to make 4 triangles. Each triangle contributes 180°, total 720°."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-23",
+    "prompt": "A train is 150 meters long and passes a stationary pole completely in 10 seconds. What is its speed?",
+    "choices": [
+      "10 m/s",
+      "12 m/s",
+      "15 m/s",
+      "20 m/s",
+      "25 m/s"
+    ],
+    "correct": 2,
+    "hint": "Passing a pole means the train moves its own length.",
+    "solutions": [
+      "Speed = distance/time = 150/10 = 15 m/s.",
+      "In 10 seconds the train travels 150 meters. In one second it travels 15 meters."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-24",
+    "prompt": "Which of these positive integers has exactly three positive factors?",
+    "choices": [
+      "16",
+      "27",
+      "36",
+      "49",
+      "64"
+    ],
+    "correct": 3,
+    "hint": "A number has exactly three positive divisors when it is the square of a prime.",
+    "solutions": [
+      "49 = 7² has factors 1, 7, and 49, exactly three. Other choices have more.",
+      "The prime-square rule gives exactly three divisors: 1, p, p². Among the choices 49 = 7² works."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  },
+  {
+    "id": "ORIGINAL-MATHBREAK-25",
+    "prompt": "If 2^a = 32 and 3^b = 81, what is a + b?",
+    "choices": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "correct": 2,
+    "hint": "Rewrite 32 and 81 as prime powers.",
+    "solutions": [
+      "32 = 2^5 so a = 5; 81 = 3^4 so b = 4. Therefore a + b = 9.",
+      "Count powers: 2×2×2×2×2 is 32 and 3×3×3×3 is 81. Add their exponents, 5 + 4 = 9."
+    ],
+    "videoUrl": "",
+    "source": "Original MathBreak demonstration content (not AMC 8 contest questions)"
+  }
+]

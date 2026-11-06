@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>MathBreak TV V4 | Math Mode and One-Question Quiz Mode</title><style>
+:root{color-scheme:dark;--bg:#080e18;--panel:#101c2d;--pale:#132338;--line:#2d4358;--ink:#eef6ff;--dim:#a7b9ca;--a:#f9c46f;--mint:#64e0bd;--red:#ff97a4;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{padding:0;margin:0;min-height:100%;background:#080d14;color:var(--ink)}body{display:grid;place-items:center}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--a);outline-offset:3px}button:disabled{opacity:.42;cursor:not-allowed}.tv{position:relative;isolation:isolate;width:min(100vw,1600px);aspect-ratio:16 / 9;min-height:620px;overflow:hidden;background:radial-gradient(ellipse at 80% 0%,#1e3452,#0b1524 57%,#09111b);box-shadow:0 30px 95px #000c}.tv:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,transparent 0 97%,#7295af07 97% 100%),linear-gradient(0deg,transparent 0 97%,#7295af07 97% 100%);background-size:44px 44px;opacity:.25}.bar{position:absolute;left:0;right:0;top:0;height:74px;padding:0 5.4%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #cad5e51b;background:#0b1628cf;z-index:4}.logo{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:850;letter-spacing:-.03em}.sigma{background:var(--a);color:#1d2431;width:37px;height:37px;border-radius:11px;display:grid;place-items:center;font-size:25px}.logo small{color:#a6bdcc;font-weight:400;font-size:16px}.top-right{display:flex;gap:10px;align-items:center}.tag{font-size:12px;font-weight:800;letter-spacing:.08em;background:#1b3045;border:1px solid #466179;border-radius:99px;padding:8px 13px;color:#b7ccdd}.tag.mint{background:#15493d77;border-color:#2c816c;color:#8ff6d1}.top-right button{border:1px solid #526b85;background:#1a3046;color:#eef7ff;border-radius:11px;padding:10px 14px;font-size:13px;font-weight:700}.content{position:absolute;inset:74px 0 0;padding:38px 6.5% 45px;display:flex;flex-direction:column}.subhead{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--a)}.quiz-columns{display:grid;grid-template-columns:1.15fr .85fr;gap:43px;flex:1;min-height:0;margin-top:22px}.left{display:flex;flex-direction:column;min-height:0}.problem-title{font-size:clamp(24px,2.45vw,39px);line-height:1.24;letter-spacing:-.035em;font-weight:750;margin:14px 0 24px;max-width:700px}.mathbox{flex:1;min-height:110px;border:1px solid #41607a;border-radius:18px;background:radial-gradient(ellipse at 70% 55%,#2b496966,transparent 65%),#0d1a2d;display:flex;justify-content:center;align-items:center;font-size:clamp(22px,2.9vw,43px);font-weight:680;text-align:center;box-shadow:inset 0 1px #ffffff08}.helpbar{margin-top:22px;min-height:64px;display:flex;gap:14px;align-items:center}.text-button{border-radius:11px;border:1px solid #48647c;background:#1b324a;color:#e0edfa;font-size:14px;font-weight:750;padding:13px 17px;white-space:nowrap}.text-button:hover{background:#304b65}.hint{font-size:13px;color:#aec8d5;line-height:1.45}.right{min-width:0;display:flex;flex-direction:column;border-left:1px solid #ffffff2a;padding-left:34px}.right-label{font-size:14px;color:#b9ccdd;margin-bottom:14px}.answers{display:flex;flex:1;min-height:0;flex-direction:column;gap:11px}.answer{display:flex;align-items:center;text-align:left;gap:18px;flex:1;min-height:48px;padding:9px 17px;border:2px solid #34516a;color:#f0f7ff;background:#182b40;border-radius:14px;font-size:clamp(16px,1.45vw,22px);font-weight:760;transition:background .1s,border .1s}.answer:hover{background:#2b435a}.answer:focus{outline:0;background:#30445b;border-color:var(--a);box-shadow:0 0 0 2px #facb6b2e}.answer .letter{display:grid;place-items:center;border-radius:10px;flex:none;width:39px;height:39px;color:#c5dced;border:1px solid #627d91;font-size:16px}.answer.wrong{border-color:#8d4a5c;background:#522c3b;color:#f5c4cb;opacity:.72}.notice{font-size:13px;color:var(--dim);margin-top:12px;min-height:20px}.notice.wrong{color:var(--red)}.footer{position:absolute;z-index:3;bottom:15px;left:6.5%;right:6.5%;display:flex;justify-content:space-between;font-size:12px;color:#90a9ba}.footer strong{color:#cfdded}.cta{background:var(--a);color:#1b2634;border:0;border-radius:13px;padding:15px 20px;font-size:16px;font-weight:850}.cta.alt{background:#1e344a;border:1px solid #466781;color:#e8f4ff}.cta:hover{filter:brightness(1.08)}.success,.reading,.video-solution,.prefs{height:100%;display:flex;flex-direction:column}.success{justify-content:center;align-items:center;text-align:center;gap:14px}.success .check{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:#184d42;border:2px solid var(--mint);color:var(--mint);font-size:53px}.success h1{font-size:52px;margin:2px 0 0}.success p{font-size:18px;color:#b8d0df;line-height:1.5;max-width:740px;margin:0}.btnrow{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:22px}.reading h1,.video-solution h1,.prefs h1{font-size:32px;margin:14px 0}.reading p,.video-solution p,.prefs p{font-size:17px;color:#c1d5e2;line-height:1.6;max-width:930px}.readmath{border:1px solid #375670;border-radius:18px;background:#0d2035;padding:22px;margin:19px 0;font-size:27px;text-align:center}.tabs{display:flex;gap:12px;margin-top:12px}.tabs button{border:1px solid #40607a;color:#e8f5fe;background:#1c344b;border-radius:10px;padding:12px 19px;font-weight:750}.tabs button.active{background:var(--a);color:#1b2838;border-color:var(--a)}.reading .btnrow,.video-solution .btnrow{margin-top:auto;justify-content:flex-start}.video-placeholder{flex:1;border:1px solid #446a83;border-radius:20px;background:radial-gradient(circle at center,#29566e,#0a1a2c 65%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:15px}.video-placeholder b{font-size:25px}.video-placeholder span{font-size:14px;color:#b0ccdc}.modal-layer{position:absolute;inset:0;z-index:8;display:grid;place-items:center;background:#040912d9;backdrop-filter:blur(8px);padding:24px}.modal{width:min(850px,94vw);background:linear-gradient(135deg,#1a2a3e,#121f31);border:1px solid #71869e77;border-radius:25px;padding:42px;box-shadow:0 24px 90px #000c;text-align:center}.modal .eyebrow{font-size:13px;color:var(--a);font-weight:800;letter-spacing:.16em}.modal h1{font-size:36px;margin:12px 0}.modal p{color:#bfd0df;font-size:16px;margin:0 0 27px;line-height:1.5}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.break-choice{border:2px solid #45647c;border-radius:18px;background:#1d354c;color:var(--ink);padding:21px 10px;display:flex;flex-direction:column;align-items:center;gap:7px}.break-choice:hover,.break-choice:focus{outline:0;background:#305069;border-color:var(--a);box-shadow:0 0 0 3px #d9ac602b}.break-choice strong{font-size:33px;color:#ffd08b}.break-choice span{font-size:13px;color:#b9d0e0}.stay{margin-top:16px;width:100%;padding:16px 20px;border:1px solid #66806e;border-radius:13px;background:#183f39;color:#a5f4d9;font-size:17px;font-weight:800}.stay:focus{outline:2px solid var(--a)}.mock-video{position:absolute;inset:0;background:radial-gradient(ellipse at 67% 52%,#568f86,#254a67 48%,#0d2339 75%);display:flex;flex-direction:column;justify-content:flex-end;padding:7% 7% 8%}.mock-video:before{content:"";position:absolute;inset:15% 0 0 15%;opacity:.42;background:linear-gradient(140deg,#8ac79c75,#163d5530 36%,#08182d);clip-path:polygon(0 57%,27% 29%,40% 39%,56% 12%,87% 55%,100% 20%,100% 100%,0 100%)}.mock-video h1{position:relative;font-size:47px;letter-spacing:-.05em;text-shadow:0 3px 22px #000}.mock-video p{position:relative;color:#e1f0f6}.break-status{position:absolute;z-index:3;top:112px;right:6.5%;background:#071824bc;border:1px solid #8dc6ba77;border-radius:17px;padding:19px 23px;text-align:center}.break-status span{display:block;font-size:12px;color:#c7e4db;letter-spacing:.08em;font-weight:800}.break-status b{font-size:39px;color:#fff}.video-actions{display:flex;gap:12px;position:relative;margin-top:18px}.video-actions button{background:#13283cbf;color:#eaf9ff;border:1px solid #a1bac790;padding:13px 17px;border-radius:12px;font-weight:800}.video-actions button:focus{outline:3px solid var(--a)}.fake-player{position:absolute;bottom:23px;left:7%;right:7%;height:5px;border-radius:5px;background:#bfd3d766}.fake-player i{display:block;width:38%;background:var(--a);height:100%}.minor{font-size:13px;color:#a2b7c8}.prefs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:13px}.pref{background:#1a3145;border:1px solid #37546b;border-radius:15px;padding:20px}.pref h3{font-size:16px;margin:0 0 8px}.pref p{font-size:14px;margin:0}.hide{display:none!important}@media(max-width:950px){.tv{min-height:650px}.quiz-columns{gap:22px}.left .problem-title{font-size:25px}.right{padding-left:20px}.modal{padding:28px}.bar{height:64px}.content{top:64px;inset:64px 0 0;padding:25px 4.5% 40px}.footer{left:4.5%;right:4.5%}}@media(max-width:630px){body{display:block}.tv{aspect-ratio:auto;min-height:100vh}.quiz-columns{grid-template-columns:1fr;overflow:auto;gap:16px}.right{border:0;border-top:1px solid #fff2;padding:15px 0}.mathbox{min-height:90px}.answers{flex:none}.answer{min-height:52px}.content{padding:20px 4% 60px}.bar{padding:0 4%}.logo{font-size:15px}.logo small{display:none}.tag{display:none}.choices{grid-template-columns:1fr}.break-choice{padding:10px}.break-choice strong{font-size:25px}.modal h1{font-size:27px}.modal{max-height:95vh;overflow:auto}.footer{display:none}}
+</style><style>
+.gate{display:inline-flex;align-items:center;gap:8px;border:1px solid #777950;padding:7px 13px;border-radius:100px;background:#47412762;color:#ffda91;font-weight:800;font-size:13px}
+.gate.open{background:#153c34;border-color:#3e967c;color:#99f8d0}
+.micro-note{color:#c1d3e1;font-size:14px;line-height:1.5}
+.primaryline{border-top:1px solid #426077;margin-top:13px;padding-top:18px}
+.lockmsg{padding:18px 23px;border-radius:13px;background:#51342b99;border:1px solid #c88a55;color:#ffe0b7;font-size:16px;max-width:680px;text-align:center;line-height:1.5}
+.action-strong{background:#ffe0a3!important;color:#162334!important;border-color:#ffe0a3!important}
+@media(max-width:950px){.lockmsg{font-size:14px}}
+.quick-state{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}.countdown-hint{font-size:14px;font-weight:700;color:#d8f6ea}.mode-pill{font-size:13px;font-weight:900;letter-spacing:.08em;border:1px solid #5d7a90;background:#1a324c;padding:9px 12px;border-radius:99px;color:#addaff}.quiz-toast{position:absolute;z-index:10;inset:0;display:grid;place-items:center;background:#081a20ed}.quiz-toast .tick{color:#99f8d0;font-size:80px}.quiz-toast strong{font-size:42px}.quiz-toast p{color:#bdddd3;font-size:20px}.quiz-toast .stack{display:flex;flex-direction:column;align-items:center;gap:13px}@media(max-width:630px){.mock-video h1{font-size:30px}}
+</style></head><body>
+<div class="tv" id="tv">
+  <div class="bar" id="bar"><div class="logo"><span class="sigma">∑</span> MathBreak <small>TV · V4</small></div>
+    <div class="top-right"><span class="tag mint" id="state-tag">∞ MATH MODE</span>
+      <button id="back-button" type="button">⟵ Back / Mode Menu</button>
+      <button id="settings-button" type="button">⚙</button>
+    </div>
+  </div>
+  <div class="content" id="content"></div>
+  <div class="footer" id="footer"><span><strong>↑ ↓ ← →</strong> navigate · <strong>Enter</strong> choose · <strong>Esc</strong> Back</span><span>Original AMC-style sample questions · Demo only</span></div>
+  <div id="modal-root"></div>
+</div>
+<script>
+'use strict';
+const problems=[
+ {question:'Three consecutive integers have a sum of 72. What is the largest integer?',math:'(n − 1) + n + (n + 1) = 72',options:['23','24','25','26','27'],answer:2,hints:['The average of three consecutive integers equals the middle one.','Divide 72 by 3 to find the middle integer.'],sol:[['The middle number is 72 ÷ 3 = 24. The three integers are 23, 24, and 25. So the largest is 25.','72 ÷ 3 = 24　→　24 + 1 = 25'],['Let the middle number be n. Then (n−1)+n+(n+1)=3n=72. Hence n=24 and the largest is 25.','3n = 72　→　n + 1 = 25']]},
+ {question:'A rectangle has a perimeter of 50 cm. Its length is 5 cm longer than its width. What is its area?',math:'P = 50 cm　　 L = W + 5',options:['125 cm²','150 cm²','175 cm²','200 cm²','225 cm²'],answer:1,hints:['The perimeter formula is 2(L + W).','Since L+W=25 and L−W=5, solve for L and W.'],sol:[['The length and width sum to 25 and differ by 5. Thus they are 15 and 10, giving area 150 square centimeters.','15 × 10 = 150 cm²'],['Write L=W+5. The perimeter gives 2(W+5+W)=50, or 4W+10=50, so W=10 and L=15.','4W + 10 = 50　→　W = 10']]},
+ {question:'Three friends divide 48 stickers in the ratio 1 : 2 : 3. How many stickers does the friend with the most receive?',math:'1 : 2 : 3　　 Total = 48',options:['8','12','16','20','24'],answer:4,hints:['Count the total number of ratio parts.','There are 6 parts, so one part is 48 ÷ 6 = 8.'],sol:[['The ratio has 1+2+3=6 parts. The largest share is 3 parts, worth 3×8 = 24 stickers.','48 ÷ 6 = 8　→　3 × 8 = 24'],['Let each ratio part be x. Then x+2x+3x=48, so x=8. The largest share is 3x=24.','6x = 48　→　3x = 24']]},
+ {question:'A number is increased by 20%, then decreased by 20%. What percentage of the original number remains?',math:'100% × 1.20 × 0.80 = ?',options:['80%','96%','100%','104%','120%'],answer:1,hints:['Start with a simple value such as 100.','Increase 100 to 120, then decrease 120 by 24.'],sol:[['Start with 100. A 20% increase gives 120, and 20% of 120 is 24. The final value is 96, which is 96% of the original.','100 → 120 → 96'],['Multiply the scale factors: 1.2 × 0.8 = 0.96, which is 96%.','1.20 × 0.80 = 0.96']]}
+];
+const $=id=>document.getElementById(id);
+const safe=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let view='math', mode='math', problemIndex=0, wrong=new Set(), hint=0, solution=0;
+let solved=0, currentSolved=false, menu=null, interval=30, deadline=0, intervalTicker=null, handoffTimer=null, returnReason='Welcome';
+const content=$('content'),root=$('modal-root');
+function resetQuestion(){problemIndex=(problemIndex+1)%problems.length;wrong.clear();hint=0;solution=0;currentSolved=false}
+function navFocus(selector){requestAnimationFrame(()=>{if(!menu)content.querySelector(selector)?.focus({preventScroll:true})})}
+function viewChange(next){view=next;render()}
+function render(){
+ const p=problems[problemIndex],watching=view==='tv', isQuiz=view==='quizQuestion', isMath=view==='math';
+ $('bar').classList.toggle('hide',watching);$('footer').classList.toggle('hide',watching);
+ $('state-tag').textContent=watching?'⏱ QUIZ MODE · '+interval+' MIN':isQuiz?'1 QUESTION · AUTO RETURN':mode==='math'?(currentSolved?'✓ MODE UNLOCKED':'∞ MATH MODE'):'QUIZ MODE';
+ $('state-tag').classList.toggle('mint',currentSolved&&mode==='math');
+ $('back-button').textContent=mode==='math'?'⟵ Back / Mode Menu':'⟵ Back / Hint';
+ if(isMath||isQuiz){
+  const sub=isQuiz?'QUIZ MODE · ONE QUESTION ONLY · AUTOMATIC RETURN':'MATH MODE · CONTINUOUS PRACTICE';
+  content.innerHTML=`<div class="subhead">${sub}</div>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;gap:12px"><span class="minor">Demo problem ${problemIndex+1} / ${problems.length} · ${solved} total solved</span><span class="gate">${isQuiz?'⏸ Correct answer → return to TV':'🔒 Solve correctly to enable Quiz Mode'}</span></div>
+   <div class="quiz-columns"><section class="left"><div class="minor">Original sample problem · Not from an actual AMC exam</div>
+   <h1 class="problem-title">${safe(p.question)}</h1><div class="mathbox">${safe(p.math)}</div>
+   <div class="helpbar"><button class="text-button" onclick="showHint()">✦ Hint</button><button class="text-button" onclick="openMenu()">${isQuiz?'⏸ Quiz rules':'⟵ Mode Menu'}</button></div>
+   <span class="hint">${hint?safe(p.hints[hint-1]):isQuiz?'A correct answer automatically resumes TV and starts the next '+interval+'-minute interval.':'Math Mode continues until you correctly solve and choose a timed Quiz Mode.'}</span></section>
+   <section class="right"><div class="right-label">Select answer · Remote ↑↓ + OK</div>
+   <div class="answers">${p.options.map((v,i)=>`<button class="answer ${wrong.has(i)?'wrong':''}" ${wrong.has(i)?'disabled':''} onclick="answer(${i})"><span class="letter">${'ABCDE'[i]}</span>${safe(v)}</button>`).join('')}</div>
+   <div class="notice ${wrong.size?'wrong':''}">${wrong.size?'Not quite. Try again or use a hint.':isQuiz?'Only one question will be shown this round.':'Correct answers unlock the mode selector.'}</div></section></div>`;
+  navFocus('.answer:not(:disabled)');
+ }else if(view==='success'){
+  content.innerHTML=`<div class="success"><div class="check">✓</div><div class="subhead">MATH MODE · PROBLEM SOLVED · ${solved} TOTAL</div><h1>Great work!</h1>
+   <p><b style="color:#99f8d0">${'ABCDE'[p.answer]} · ${safe(p.options[p.answer])}</b> is correct. Keep practising or switch to a periodic, one-question Quiz Mode.</p>
+   <span class="gate open">✓ Quiz Mode unlocked for this question</span>
+   <div class="btnrow"><button class="cta" onclick="openMenu()">▶ Switch to Quiz Mode</button><button class="cta alt" onclick="nextMath()">Next math problem →</button>
+   <button class="cta alt" onclick="solution=0;viewChange('written')">Written solutions</button><button class="cta alt" onclick="viewChange('video')">Video solution</button></div>
+   <div class="micro-note primaryline">Quiz Mode displays <b>one</b> question per timer expiration, then returns to TV automatically after a correct answer.</div></div>`;
+  navFocus('.cta');
+ }else if(view==='written'){
+  content.innerHTML=`<section class="reading"><div class="subhead">MATH MODE · WRITTEN SOLUTIONS</div><h1>Why is ${'ABCDE'[p.answer]} correct?</h1>
+  <p>${safe(p.question)}</p><div class="tabs"><button class="${solution===0?'active':''}" onclick="solution=0;render()">Solution 1</button><button class="${solution===1?'active':''}" onclick="solution=1;render()">Solution 2</button></div>
+  <div class="readmath">${safe(p.sol[solution][1])}</div><p>${safe(p.sol[solution][0])}</p>
+  <div class="btnrow"><button class="cta" onclick="openMenu()">▶ Switch to Quiz Mode</button>
+  <button class="cta alt" onclick="viewChange('success')">← Back</button><button class="cta alt" onclick="nextMath()">Next math problem</button></div></section>`;
+  navFocus('.tabs .active');
+ }else if(view==='video'){
+  content.innerHTML=`<section class="video-solution"><div class="subhead">MATH MODE · VIDEO SOLUTION</div><h1>Watch the explanation</h1>
+   <div class="video-placeholder"><div style="font-size:57px">▷</div><b>Video explanation placeholder</b><span>Available only when a licensed video source exists for this problem.</span></div>
+   <div class="btnrow"><button class="cta" onclick="openMenu()">▶ Switch to Quiz Mode</button><button class="cta alt" onclick="viewChange('written')">Written solutions</button><button class="cta alt" onclick="viewChange('success')">← Back</button></div></section>`;
+  navFocus('.cta');
+ }else if(view==='tv'){
+  content.innerHTML=`<div class="mock-video"><h1>Watching a video</h1><p>SIMULATION — The real APK closes its quiz UI to reveal the previous Android TV application.</p>
+   <div class="video-actions"><button onclick="timeoutNow()">⏱ Trigger next quiz now</button><button onclick="openModeMenu()">⚙ Switch mode (parent)</button><button onclick="showNotes()">System limitations</button></div><div class="fake-player"><i></i></div></div>
+   <div class="break-status"><span>QUIZ IN</span><b id="countdown">${remain()}</b><div class="minor">One question every ${interval} minutes</div></div>`;
+  navFocus('.video-actions button');
+ }else if(view==='settings'){
+  content.innerHTML=`<div class="prefs"><div class="subhead">NORMAL APK · NOT AN INTEGRATED VIDEO PLAYER</div><h1>Compatibility and permissions</h1>
+   <p>Math Mode runs inside MathBreak. Quiz Mode schedules periodic one-question interruptions and returns to the previous app after success.</p>
+   <div class="prefs-grid"><div class="pref"><h3>Bring quiz over other apps</h3><p>Full-screen QuizActivity first; background launch and overlay permission behavior varies by Android TV firmware.</p></div>
+   <div class="pref"><h3>Periodic timing</h3><p>15, 30, or 45 minutes from the last correct answer. Device power management may delay alarms.</p></div>
+   <div class="pref"><h3>Media pause / resume</h3><p>Notification-listener authorization for active MediaSessions, only for compliant players. Not guaranteed system-wide.</p></div>
+   <div class="pref"><h3>Child-proof controls</h3><p>Cannot fully suppress Home, app switching, or changes to permissions in an ordinary APK.</p></div></div>
+   <div class="btnrow" style="margin-top:auto"><button class="cta" onclick="viewChange(mode==='quiz'?'tv':currentSolved?'success':'math')">Return</button></div></div>`;
+  navFocus('.cta');
+ }
+ if(menu)renderMenu();
+}
+function answer(i){
+ if(!(view==='math'||view==='quizQuestion')||currentSolved||wrong.has(i))return;
+ const p=problems[problemIndex];
+ if(i===p.answer){
+  solved++;currentSolved=true;
+  if(mode==='quiz'){
+   content.innerHTML='<div class="success"><div class="check">✓</div><h1>Correct!</h1><p>Resuming TV automatically…</p><span class="mode-pill">Next quiz in '+interval+' minutes</span></div>';
+   handoffTimer=setTimeout(()=>{resetQuestion();returnToTv();},900);
+  }else viewChange('success');
+ }else{wrong.add(i);if(wrong.size>=2)hint=Math.max(1,hint);render()}
+}
+function showHint(){if(view!=='math'&&view!=='quizQuestion')return;hint=Math.min(hint+1,2);render()}
+function nextMath(){if(mode!=='math')return;resetQuestion();returnReason='Next problem';closeMenu(false);viewChange('math')}
+function openMenu(){if(menu)return;menu=view==='quizQuestion'?'quizLocked':(!currentSolved?'locked':'select');renderMenu()}
+function renderMenu(){
+ if(menu==='locked'){
+  root.innerHTML=`<div class="modal-layer"><div class="modal" role="dialog" aria-modal="true"><div class="eyebrow">🔒 MATH MODE</div><h1>Solve this problem first</h1><p>Correctly answer the current math question to unlock Quiz Mode and choose a 15 / 30 / 45 minute timer.</p><div class="btnrow"><button class="cta" onclick="closeMenu()">Keep solving</button><button class="cta alt" onclick="closeMenu();showHint()">Get a hint</button></div></div></div>`;
+ }else if(menu==='quizLocked'){
+  root.innerHTML=`<div class="modal-layer"><div class="modal" role="dialog" aria-modal="true"><div class="eyebrow">⏸ QUIZ MODE</div><h1>One correct answer to return to TV</h1><p>The video break resumes automatically after a correct answer. No additional questions or timer menu appear.</p><div class="btnrow"><button class="cta" onclick="closeMenu()">Continue question</button><button class="cta alt" onclick="closeMenu();showHint()">Get a hint</button></div><p class="minor" style="margin:16px 0 0">An ordinary APK cannot block the TV Home button.</p></div></div>`;
+ }else if(menu==='select'){
+  root.innerHTML=`<div class="modal-layer"><div class="modal" role="dialog" aria-modal="true"><div class="eyebrow">✓ SWITCH TO QUIZ MODE</div><h1>How often should a quiz appear?</h1><p>Watch TV between challenges. Exactly one problem appears after each interval; one correct answer returns you to TV.</p>
+  <div class="choices">${[15,30,45].map(n=>`<button class="break-choice" onclick="enterQuizMode(${n})"><strong>${n} min</strong><span>Between questions</span></button>`).join('')}</div><button class="stay" onclick="closeMenu()">∞ Stay in Math Mode</button></div></div>`;
+ }else if(menu==='parent'){
+  root.innerHTML=`<div class="modal-layer"><div class="modal" role="dialog" aria-modal="true"><div class="eyebrow">PARENT / DEMO CONTROL</div><h1>Switch learning mode</h1><p>The real app should optionally protect this control with a parent PIN.</p><div class="btnrow"><button class="cta" onclick="switchToMath()">∞ Enter Math Mode</button><button class="cta alt" onclick="closeMenu()">Stay in Quiz Mode</button></div></div></div>`;
+ }else if(menu==='notes'){
+  root.innerHTML=`<div class="modal-layer"><div class="modal" role="dialog" aria-modal="true"><div class="eyebrow">DEMO LIMITATIONS</div><h1>Native Android TV behavior</h1><p>At expiry, the app attempts to pause the active MediaSession and display a full-screen question. These actions are device-dependent for ordinary APKs. After the correct answer it dismisses the quiz and requests playback resume.</p><div class="btnrow"><button class="cta" onclick="closeMenu()">Back to TV</button></div></div></div>`;
+ }
+ requestAnimationFrame(()=>root.querySelector('.cta,.break-choice')?.focus({preventScroll:true}));
+}
+function closeMenu(restore=true){menu=null;root.innerHTML='';if(restore)navFocus(view==='math'||view==='quizQuestion'?'.answer:not(:disabled)':'.cta')}
+function enterQuizMode(minutes){if(mode!=='math'||!currentSolved)return;interval=minutes;mode='quiz';closeMenu(false);resetQuestion();returnToTv()}
+function returnToTv(){deadline=Date.now()+interval*60000;viewChange('tv');startTicker()}
+function remain(){let s=Math.max(0,Math.ceil((deadline-Date.now())/1000));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function startTicker(){if(intervalTicker)clearInterval(intervalTicker);intervalTicker=setInterval(()=>{if(view!=='tv')return;const node=$('countdown');if(node)node.textContent=remain();if(Date.now()>=deadline)timeoutNow()},250)}
+function timeoutNow(){if(mode!=='quiz'||view!=='tv')return;clearInterval(intervalTicker);intervalTicker=null;viewChange('quizQuestion')}
+function openModeMenu(){menu='parent';renderMenu()}
+function switchToMath(){mode='math';clearInterval(intervalTicker);intervalTicker=null;closeMenu(false);resetQuestion();viewChange('math')}
+function showNotes(){menu='notes';renderMenu()}
+function back(){if(menu){closeMenu();return}if(view==='written'||view==='video'){viewChange('success');return}if(view==='settings'){viewChange(mode==='quiz'?'tv':currentSolved?'success':'math');return}if(view==='tv'){openModeMenu();return}openMenu()}
+$('back-button').addEventListener('click',back);
+$('settings-button').addEventListener('click',()=>{closeMenu(false);viewChange('settings')});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'||e.key==='Backspace'){e.preventDefault();back();return}
+ if(!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;
+ const scope=menu?root:content;const btns=Array.from(scope.querySelectorAll('button:not(:disabled)'));
+ if(!btns.length)return;e.preventDefault();let idx=btns.indexOf(document.activeElement);if(idx<0)idx=0;
+ const step=(e.key==='ArrowUp'||e.key==='ArrowLeft')?-1:1;btns[(idx+step+btns.length)%btns.length].focus({preventScroll:true});
+});
+render();
+</script></body></html>

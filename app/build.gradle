@@ -1,0 +1,23 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'org.mathbreak.tv'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'org.mathbreak.tv'
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '0.1.0'
+        // The application uses Java/Dex only. No ABI-specific native .so files.
+        // Consequently the generated APK works on ARMv7, ARM64 and x86 TVs.
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
