@@ -45,7 +45,6 @@ public final class MainActivity extends Activity {
     private boolean[] wrong = new boolean[5];
     private int wrongCount;
     private boolean showHint = false;
-    private boolean quizPausedMedia = false;
     private String screen = "";
 
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -81,19 +80,10 @@ public final class MainActivity extends Activity {
         wrong = new boolean[5];
         question = bank.at(QuizState.currentQuestion(this));
         if (QuizState.quiz(this)) {
-            if (QuizState.pending(this)) {
-                QuizAlarmReceiver.clearNotification(this);
-                if (!quizPausedMedia) {
-                    PlaybackController.pause(this);
-                    quizPausedMedia = true;
-                }
-                showQuestion();
-            } else {
-                showWaiting();
-            }
-        } else {
-            showQuestion();
-        }
+            if (QuizState.pending(this) && QuizOverlayService.launch(this)) {
+                finish();
+            } else showWaiting();
+        } else showQuestion();
     }
 
     private int dp(float value) {
@@ -257,17 +247,8 @@ public final class MainActivity extends Activity {
             return;
         }
         QuizState.markCorrect(this);
-        if (QuizState.quiz(this) && QuizState.pending(this)) {
-            QuizScheduler.afterCorrect(this);
-            QuizAlarmReceiver.clearNotification(this);
-            PlaybackController.resume(this);
-            quizPausedMedia = false;
-            Toast.makeText(this, "Correct! Enjoy your TV break.", Toast.LENGTH_SHORT).show();
-            finish();
-        } else {
-            isSolved = true;
-            showCorrect();
-        }
+        isSolved = true;
+        showCorrect();
     }
 
     private void showCorrect() {
@@ -350,8 +331,15 @@ public final class MainActivity extends Activity {
         int minutes = QuizState.prefs(this).getInt(QuizState.KEY_MINUTES, 30);
         long deadline = QuizState.prefs(this).getLong(QuizState.KEY_NEXT_AT, 0);
         long remaining = Math.max(0, (deadline - System.currentTimeMillis() + 59_999) / 60_000);
-        startScreen("WAITING", "QUIZ MODE • TV BREAK", "Quiz Mode is running",
-                "MathBreak shows one problem after each timed interval. You can return to the previous TV app now.");
+        boolean due = QuizState.pending(this);
+        startScreen("WAITING", "QUIZ MODE • TV BREAK",
+                due ? "Your question is ready" : "Quiz Mode is running",
+                due ? "Allow display-over-apps permission to show the question in a smaller overlay."
+                    : "MathBreak asks one question after each interval. Your previous video app stays on screen.");
+        if (due) singleButton("Show pending quiz overlay", v -> {
+            if (QuizOverlayService.launch(this)) finish();
+            else showSettings();
+        });
         info("Interval: " + minutes + " minutes  •  Next quiz in approximately " + remaining + " minutes", C_TEAL);
         singleButton("Return to TV", v -> finish());
         singleButton("Practice Math Mode now", v -> {
@@ -363,7 +351,7 @@ public final class MainActivity extends Activity {
                     }).setNegativeButton("Stay in Quiz Mode", null).show();
         });
         singleButton("Permissions / settings", v -> showSettings());
-        if ((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+        if (!due && (getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
             singleButton("TEST: Trigger one quiz now", v -> {
                 QuizState.prefs(this).edit().putBoolean(QuizState.KEY_DUE, true).apply();
                 launchCurrentMode();
@@ -392,7 +380,7 @@ public final class MainActivity extends Activity {
         singleButton("← Back", v -> {
             if (!QuizState.prefs(this).getBoolean("onboarded", false)) showWelcome();
             else if (QuizState.quiz(this)) {
-                if (QuizState.pending(this)) showQuestion(); else showWaiting();
+                showWaiting();
             } else if (isSolved) showCorrect();
             else showQuestion();
         });
@@ -412,7 +400,10 @@ public final class MainActivity extends Activity {
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101) finish();
-        else if (requestCode == 102) showSettings();
+        else if (requestCode == 102) {
+            if (QuizState.quiz(this) && QuizState.pending(this)) launchCurrentMode();
+            else showSettings();
+        }
     }
 
     @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -428,7 +419,7 @@ public final class MainActivity extends Activity {
             case "QUESTION":
                 // Cannot prevent the Android Home button / switching apps from a normal APK.
                 new AlertDialog.Builder(this).setTitle("Math challenge is still locked")
-                        .setMessage("Please answer the current problem correctly to continue watching TV.")
+                        .setMessage("Solve this question to unlock Quiz Mode. Previous problems are not part of the Back history.")
                         .setPositiveButton("Keep solving", null).show();
                 break;
             case "SOLUTIONS": showCorrect(); break;
@@ -438,7 +429,7 @@ public final class MainActivity extends Activity {
                 if (!QuizState.prefs(this).getBoolean("onboarded", false)) {
                     showWelcome();
                 } else if (QuizState.quiz(this)) {
-                    if (QuizState.pending(this)) showQuestion(); else showWaiting();
+                    showWaiting();
                 } else if (isSolved) showCorrect(); else showQuestion();
                 break;
             case "WAITING": finish(); break;
