@@ -10,8 +10,8 @@ android {
         applicationId 'org.mathbreak.tv'
         minSdk 23
         targetSdk 34
-        versionCode 1
-        versionName '0.1.0'
+        versionCode 2
+        versionName '0.2.0'
         // The application uses Java/Dex only. No ABI-specific native .so files.
         // Consequently the generated APK works on ARMv7, ARM64 and x86 TVs.
     }
