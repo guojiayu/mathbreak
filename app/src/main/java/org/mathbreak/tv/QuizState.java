@@ -43,5 +43,6 @@ final class QuizState {
         prefs(context).edit().putString(KEY_MODE, MATH)
                 .putBoolean(KEY_DUE, false).putLong(KEY_NEXT_AT, 0).apply();
         QuizScheduler.cancel(context);
+        context.stopService(new android.content.Intent(context, QuizOverlayService.class));
     }
 }
